@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import Card from '../components/Card';
 
-const EbookScreen = () => {
+const EbookPage = () => {
   // Placeholder ebook data
   const ebooks = [
     { id: 1, title: 'Introduction to React Native', description: 'Learn the basics of React Native development' },
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EbookScreen;
+export default EbookPage;

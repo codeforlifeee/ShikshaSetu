@@ -4,7 +4,7 @@ import { Title, Paragraph } from 'react-native-paper';
 import SearchBar from '../components/SearchBar';
 import Card from '../components/Card';
 
-const WelcomeScreen = () => {
+const WelcomePage = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const onChangeSearch = query => setSearchQuery(query);
@@ -23,7 +23,7 @@ const WelcomeScreen = () => {
             <Card
               key={item}
               title={`Course ${item}`}
-              image={{ uri: 'https://picsum.photos/700' }}
+              image={{ uri: '' }}
             />
           ))}
         </View>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WelcomeScreen;
+export default WelcomePage;

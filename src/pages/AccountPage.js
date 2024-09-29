@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Title, List, Button } from 'react-native-paper';
 
-const AccountScreen = () => {
+const AccountPage = () => {
   // Placeholder user data
   const user = {
     username: 'johndoe',
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AccountScreen;
+export default AccountPage;

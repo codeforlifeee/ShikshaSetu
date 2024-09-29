@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { List, Switch, Divider } from 'react-native-paper';
 
-const SettingsScreen = ({ navigation }) => {
+const SettingsPage = ({ navigation }) => {
   const [notificationsEnabled, setNotificationsEnabled] = React.useState(true);
 
   return (
@@ -65,4 +65,17 @@ const SettingsScreen = ({ navigation }) => {
         <List.Item
           title="Logout"
           left={() => <List.Icon icon="logout" />}
-          onPress={() =>
+          onPress={() => {}}
+        />
+      </List.Section>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+export default SettingsPage;

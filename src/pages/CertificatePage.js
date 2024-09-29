@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Title, Button } from 'react-native-paper';
 
-const CertificateScreen = () => {
+const CertificatePage = () => {
   const handleDownload = () => {
     // Implement certificate download logic here
     console.log('Downloading certificate...');
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CertificateScreen;
+export default CertificatePage;

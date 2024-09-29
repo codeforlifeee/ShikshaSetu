@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import Swiper from 'react-native-swiper';
 
-const SliderScreen = ({ navigation }) => {
+const SliderPage = ({ navigation }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const slides = [
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SliderScreen;
+export default SliderPage;
