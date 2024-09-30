@@ -30,7 +30,7 @@ const WelcomePage = ({ navigation }) => {
                     {images.map((image, index) => (
                         <Card
                             key={index}
-                            title={`Course ${index + 1}`}
+                            title={`Course ${index + 1}`} // Corrected this line
                             image={image} // Using the local images here
                         />
                     ))}
@@ -59,4 +59,3 @@ const styles = StyleSheet.create({
 });
 
 export default WelcomePage;
-

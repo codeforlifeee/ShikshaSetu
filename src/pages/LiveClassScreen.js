@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import { TextInput, Button, Title, Card } from 'react-native-paper';
+import { TextInput, Button, Title } from 'react-native-paper';
+// Ensure you have installed and linked react-native-webview
+import { WebView } from 'react-native-webview'; // Ensure this package is installed
 
 const LiveClassScreen = () => {
   const [message, setMessage] = useState('');
@@ -16,16 +18,18 @@ const LiveClassScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.videoContainer}>
-        {/* Placeholder for video component */}
-        <Card style={styles.videoPlaceholder}>
-          <Card.Content>
-            <Title>Live Video Stream</Title>
-          </Card.Content>
-        </Card>
+        {/* WebView for live YouTube video stream */}
+        <WebView
+          style={styles.videoPlaceholder}
+          source={{ uri: 'https://www.youtube.com/watch?v=w7ejDZ8SWv8' }}
+          javaScriptEnabled={true} // Enable JavaScript if needed
+          domStorageEnabled={true} // Enable DOM storage if needed
+          allowsInlineMediaPlayback={true} // Allow inline playback
+        />
       </View>
       <View style={styles.chatContainer}>
         <ScrollView style={styles.chatMessages}>
-          {chat.map(msg => (
+          {chat.map((msg) => (
             <View key={msg.id} style={styles.message}>
               <Title style={styles.sender}>{msg.sender}</Title>
               <Title>{msg.text}</Title>
@@ -39,7 +43,9 @@ const LiveClassScreen = () => {
             placeholder="Type your message..."
             style={styles.input}
           />
-          <Button mode="contained" onPress={sendMessage}>Send</Button>
+          <Button mode="contained" onPress={sendMessage}>
+            Send
+          </Button>
         </View>
       </View>
     </View>
@@ -56,8 +62,6 @@ const styles = StyleSheet.create({
   },
   videoPlaceholder: {
     height: 200,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   chatContainer: {
     flex: 1,
