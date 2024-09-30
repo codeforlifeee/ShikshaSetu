@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import Swiper from 'react-native-swiper';
+import LinearGradient from 'react-native-linear-gradient';
+//import { LinearGradient } from 'expo-linear-gradient';  // Keep this if using Expo
+
+const { width, height } = Dimensions.get('window');
 
 const SliderPage = ({ navigation }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const slides = [
-    { title: 'Welcome to ShikshaSetu', content: 'Your learning companion' },
-    { title: 'Learn Anytime, Anywhere', content: 'Access courses on the go' },
+    {
+      title: 'Explore your\nnew skills today',
+      content: 'You can learn various kinds of\ncourses in your hand',
+      image: require('../../assets/images/img.png'), // Use relative path from your project folder
+    },
+    {
+      title: 'Empower your\neducation to next level',
+      content: 'Learn new things and develop your\nproblem-solving skills',
+      image: require('../../assets/images/img.png'), // Use relative path from your project folder
+    },
   ];
 
   return (
@@ -17,21 +29,40 @@ const SliderPage = ({ navigation }) => {
         loop={false}
         onIndexChanged={(index) => setActiveIndex(index)}
         activeDotColor="#6200ee"
+        dotColor="#E0E0E0"
+        paginationStyle={styles.pagination}
       >
         {slides.map((slide, index) => (
           <View key={index} style={styles.slide}>
-            <Text style={styles.title}>{slide.title}</Text>
-            <Text style={styles.content}>{slide.content}</Text>
+            <Image source={slide.image} style={styles.image} resizeMode="contain" />
+            <LinearGradient
+              colors={index === 0 ? ['#FFFFFF', '#FFFFFF'] : ['#FFFFFF', '#E8E3FF']}
+              style={styles.contentContainer}
+            >
+              <Text style={styles.title}>{slide.title}</Text>
+              <Text style={styles.content}>{slide.content}</Text>
+              <View style={styles.buttonContainer}>
+                <Button
+                  mode="contained"
+                  onPress={() => navigation.navigate('Login')}
+                  style={styles.button}
+                  labelStyle={styles.buttonLabel}
+                >
+                  Next
+                </Button>
+                <Button
+                  mode="text"
+                  onPress={() => navigation.navigate('Login')}
+                  style={styles.skipButton}
+                  labelStyle={styles.skipButtonLabel}
+                >
+                  Skip
+                </Button>
+              </View>
+            </LinearGradient>
           </View>
         ))}
       </Swiper>
-      <Button
-        mode="contained"
-        onPress={() => navigation.navigate('Login')}
-        style={styles.button}
-      >
-        {activeIndex === slides.length - 1 ? 'Get Started' : 'Skip'}
-      </Button>
     </View>
   );
 };
@@ -39,26 +70,57 @@ const SliderPage = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
   },
   slide: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  image: {
+    width: width,
+    height: height * 0.5,
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
     padding: 20,
+    paddingTop: 40,
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#000000',
   },
   content: {
     fontSize: 16,
-    textAlign: 'center',
+    color: '#666666',
+    marginBottom: 30,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    marginTop: 20,
   },
   button: {
-    position: 'absolute',
+    backgroundColor: '#6200ee',
+    paddingHorizontal: 30,
+  },
+  buttonLabel: {
+    color: '#FFFFFF',
+    fontSize: 16,
+  },
+  skipButton: {
+    backgroundColor: 'transparent',
+  },
+  skipButtonLabel: {
+    color: '#6200ee',
+    fontSize: 16,
+  },
+  pagination: {
     bottom: 20,
-    alignSelf: 'center',
   },
 });
 
