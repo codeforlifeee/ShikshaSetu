@@ -1,8 +1,47 @@
+# Project Documentation
+
+Here are the additional links and details regarding the project design and technical approach:
+
+## 🎨 UI Design - Figma
+View the complete UI design of all the pages of the app on Figma: [Figma Design](https://www.figma.com)
+
+## 🗺️ Flow Chart - Canva
+Check out the flow chart for the app structure on Canva: [Canva Flow Chart](https://www.canva.com)
+
+## ⚙️ Technical Approach & Implementation
+
+Here are some key technical points on how the app functions:
+
+1. **📄 How do we work with PDFs?**  
+   View the detailed documentation on working with PDFs: [PDF Handling](https://www.example.com/pdf-handling)
+
+2. **🤖 How do we work with Chatbots?**  
+   Explore our approach to chatbots using Lucidchart: [Chatbot Implementation](https://www.example.com/chatbot-implementation)
+
+3. **📊 High-Level System Design**  
+   View the high-level system design of the app here: [System Design](https://www.example.com/system-design)
+
+---
+
+# 📚 Research and References
+
+Our research and references focus on revolutionizing rural education in India using AI:
+
+- [Revolutionising Rural Education in India Using AI](https://www.example.com/ai-rural-education)
+- [Digital India in Revolutionizing Education Access in Rural Areas](https://www.example.com/digital-india)
+- [ChatBot Development - BotPress Documentation](https://www.example.com/chatbot-botpress)
+- [Deployment and Cloud Services - AWS Documentation](https://www.example.com/aws-deployment)
+- [Web Accessibility - W3C Web Accessibility Initiative](https://www.example.com/w3c-accessibility)
+- [Impact of ICT on Rural Education](https://www.example.com/impact-ict-rural-education)
+- [Department of School Education and Literacy](https://www.example.com/school-education-literacy)
+
+---
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# 🚀 Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -55,7 +94,7 @@ Now that you have successfully run the app, let's modify it.
 
    For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Congratulations! :tada:
+## 🎉Congratulations! :tada:
 
 You've successfully run and modified your React Native App. :partying_face:
 
@@ -64,11 +103,11 @@ You've successfully run and modified your React Native App. :partying_face:
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
+# 🔧 Troubleshooting
 
 If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Learn More
+# 📚 Learn More
 
 To learn more about React Native, take a look at the following resources:
 
