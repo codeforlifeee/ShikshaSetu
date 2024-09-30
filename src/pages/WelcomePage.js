@@ -4,10 +4,18 @@ import { Title } from 'react-native-paper';
 import SearchBar from '../components/SearchBar';
 import Card from '../components/Card';
 
-const WelcomePage = ({ navigation }) => { // Introduced navigation prop here
+const WelcomePage = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = React.useState('');
 
     const onChangeSearch = query => setSearchQuery(query);
+
+    // Create an array of images (ensure the paths match your project structure)
+    const images = [
+        require('../../assets/images/course1.png'),
+        require('../../assets/images/course2.png'),
+        require('../../assets/images/course3.png'),
+        require('../../assets/images/course4.png'),
+    ];
 
     return (
         <View style={styles.container}>
@@ -19,11 +27,11 @@ const WelcomePage = ({ navigation }) => { // Introduced navigation prop here
             <ScrollView>
                 <Title style={styles.welcomeMessage}>Welcome to ShikshaSetu!</Title>
                 <View style={styles.cardContainer}>
-                    {[1, 2, 3, 4].map((item) => (
+                    {images.map((image, index) => (
                         <Card
-                            key={item}
-                            title={`Course ${item}`}
-                            image={{ uri: '' }} // Add a valid image URI or a placeholder
+                            key={index}
+                            title={`Course ${index + 1}`}
+                            image={image} // Using the local images here
                         />
                     ))}
                 </View>
