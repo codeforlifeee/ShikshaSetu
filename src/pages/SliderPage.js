@@ -3,7 +3,6 @@ import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient';
-//import { LinearGradient } from 'expo-linear-gradient';  // Keep this if using Expo
 
 const { width, height } = Dimensions.get('window');
 
@@ -14,12 +13,12 @@ const SliderPage = ({ navigation }) => {
     {
       title: 'Explore your\nnew skills today',
       content: 'You can learn various kinds of\ncourses in your hand',
-      image: require('../../assets/images/img.png'), // Use relative path from your project folder
+      image: require('../../assets/images/img.png'),
     },
     {
       title: 'Empower your\neducation to next level',
       content: 'Learn new things and develop your\nproblem-solving skills',
-      image: require('../../assets/images/img.png'), // Use relative path from your project folder
+      image: require('../../assets/images/img.png'),
     },
   ];
 
@@ -125,3 +124,4 @@ const styles = StyleSheet.create({
 });
 
 export default SliderPage;
+

@@ -9,6 +9,7 @@ import NotificationPage from '../pages/NotificationPage';
 import SettingsPage from '../pages/SettingsPage';
 import CertificatePage from '../pages/CertificatePage';
 import EbookPage from '../pages/EbookPage';
+import SplashPage from '../pages/SplashPage'; // Import your SplashScreen
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -16,6 +17,7 @@ const Tab = createBottomTabNavigator();
 // Define the Tab Navigator for the main pages after login
 const MainTabs = () => (
   <Tab.Navigator>
+
     <Tab.Screen name="Home" component={WelcomePage} />
     <Tab.Screen name="Notifications" component={NotificationPage} />
     <Tab.Screen name="Settings" component={SettingsPage} />
@@ -24,9 +26,10 @@ const MainTabs = () => (
   </Tab.Navigator>
 );
 
-// Define the Stack Navigator to include Login, Register, and MainTabs
+// Define the Stack Navigator to include SplashScreen, Login, Register, and MainTabs
 const AppNavigator = () => (
-  <Stack.Navigator initialRouteName="Slider">
+  <Stack.Navigator initialRouteName="Splash">
+    <Stack.Screen name="Splash" component={SplashPage} options={{ headerShown: false }} />
     <Stack.Screen name="Slider" component={SliderPage} options={{ headerShown: false }} />
     <Stack.Screen name="Login" component={LoginPage} />
     <Stack.Screen name="Register" component={RegisterPage} />
@@ -35,3 +38,4 @@ const AppNavigator = () => (
 );
 
 export default AppNavigator;
+
