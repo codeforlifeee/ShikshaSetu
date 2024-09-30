@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import { Title, Paragraph } from 'react-native-paper';
+import { Title } from 'react-native-paper';
 import SearchBar from '../components/SearchBar';
 import Card from '../components/Card';
 
-const WelcomePage = () => {
+const WelcomePage = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const onChangeSearch = query => setSearchQuery(query);

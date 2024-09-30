@@ -9,6 +9,12 @@ const RegisterPage = ({ navigation }) => {
   const [educationalStatus, setEducationalStatus] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleRegister = () => {
+    // Logic for registration goes here...
+    // After registration, navigate to the main tab and select the "Home" tab (WelcomePage)
+    navigation.navigate('Main', { screen: 'Home' });
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Register</Text>
@@ -45,7 +51,11 @@ const RegisterPage = ({ navigation }) => {
         secureTextEntry
         style={styles.input}
       />
-      <Button mode="contained" onPress={() => {}} style={styles.registerButton}>
+      <Button
+        mode="contained"
+        onPress={handleRegister}  // Update to use handleRegister function
+        style={styles.registerButton}
+      >
         Register
       </Button>
       <Button onPress={() => navigation.navigate('Login')}>

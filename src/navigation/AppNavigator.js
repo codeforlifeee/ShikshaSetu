@@ -1,7 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import globalStyles from '../styles/globlaStyles.js';
 import SliderPage from '../pages/SliderPage';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
@@ -9,14 +8,12 @@ import WelcomePage from '../pages/WelcomePage';
 import NotificationPage from '../pages/NotificationPage';
 import SettingsPage from '../pages/SettingsPage';
 import CertificatePage from '../pages/CertificatePage';
-import LiveClassScreen from '../pages/LiveClassScreen';
-import TeacherDashboardPage from '../pages/TeacherDashboaredPage';
-import AccountPage from '../pages/AccountPage';
 import EbookPage from '../pages/EbookPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+// Define the Tab Navigator for the main pages after login
 const MainTabs = () => (
   <Tab.Navigator>
     <Tab.Screen name="Home" component={WelcomePage} />
@@ -27,15 +24,13 @@ const MainTabs = () => (
   </Tab.Navigator>
 );
 
+// Define the Stack Navigator to include Login, Register, and MainTabs
 const AppNavigator = () => (
   <Stack.Navigator initialRouteName="Slider">
     <Stack.Screen name="Slider" component={SliderPage} options={{ headerShown: false }} />
     <Stack.Screen name="Login" component={LoginPage} />
     <Stack.Screen name="Register" component={RegisterPage} />
     <Stack.Screen name="Main" component={MainTabs} options={{ headerShown: false }} />
-    <Stack.Screen name="LiveClass" component={LiveClassScreen} />
-    <Stack.Screen name="TeacherDashboard" component={TeacherDashboardPage} />
-    <Stack.Screen name="Account" component={AccountPage} />
   </Stack.Navigator>
 );
 
