@@ -3,23 +3,23 @@
 Here are the additional links and details regarding the project design and technical approach:
 
 ## 🎨 UI Design - Figma
-View the complete UI design of all the pages of the app on Figma: [Figma Design](https://www.figma.com)
+View the complete UI design of all the pages of the app on Figma: [Figma Design](https://www.figma.com/design/sRdAeHtAdjHA47q8BPOsOE/Educational-App-(Community)?node-id=0-1&node-type=canvas&t=lTTbMOsZsp0e8rnP-0)
 
 ## 🗺️ Flow Chart - Canva
-Check out the flow chart for the app structure on Canva: [Canva Flow Chart](https://www.canva.com)
+Check out the flow chart for the app structure on Canva: [Canva Flow Chart](https://www.canva.com/design/DAGSH6nHAJE/riRceIfG1b5xN8qnWQiGHg/edit?utm_content=DAGSH6nHAJE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## ⚙️ Technical Approach & Implementation
 
 Here are some key technical points on how the app functions:
 
 1. **📄 How do we work with PDFs?**  
-   View the detailed documentation on working with PDFs: [PDF Handling](https://www.example.com/pdf-handling)
+   View the detailed documentation on working with PDFs: [PDF Handling](https://drive.google.com/file/d/19a3tfqcj4H6D1lny4xXBaPen5LqNkkR5/view?usp=sharing)
 
 2. **🤖 How do we work with Chatbots?**  
-   Explore our approach to chatbots using Lucidchart: [Chatbot Implementation](https://www.example.com/chatbot-implementation)
+   Explore our approach to chatbots using Lucidchart: [Chatbot Implementation](https://lucid.app/lucidchart/a9905540-87c4-4efb-8b01-41945c4bc24a/edit?viewport_loc=-1352%2C82%2C5368%2C3272%2C0_0&invitationId=inv_9d4b56ce-2bff-43ae-9d01-f4a0ef1b829b)
 
 3. **📊 High-Level System Design**  
-   View the high-level system design of the app here: [System Design](https://www.example.com/system-design)
+   View the high-level system design of the app here: [System Design](https://lucid.app/lucidchart/4f7fbee9-f22d-4e31-9332-58443734e79c/edit?viewport_loc=-567%2C136%2C2684%2C1636%2C0_0&invitationId=inv_0e682f01-9b8d-423c-a2d8-26b5ea972708)
 
 ---
 
