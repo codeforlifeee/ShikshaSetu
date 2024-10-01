@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
-import { Title } from 'react-native-paper';
+import { View, StyleSheet, ScrollView, Image } from 'react-native';
+import { Title, Button } from 'react-native-paper';
 import SearchBar from '../components/SearchBar';
 import Card from '../components/Card';
 
@@ -24,14 +24,21 @@ const WelcomePage = ({ navigation }) => {
                 onChangeText={onChangeSearch}
                 value={searchQuery}
             />
-            <ScrollView>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
                 <Title style={styles.welcomeMessage}>Welcome to ShikshaSetu!</Title>
+                <Button
+                    mode="contained"
+                    onPress={() => { /* Logic for navigating or additional actions */ }}
+                    style={styles.ctaButton}
+                >
+                    Explore Courses
+                </Button>
                 <View style={styles.cardContainer}>
                     {images.map((image, index) => (
                         <Card
                             key={index}
-                            title={`Course ${index + 1}`} // Corrected this line
-                            image={image} // Using the local images here
+                            title={`Course ${index + 1}`}
+                            image={image}
                         />
                     ))}
                 </View>
@@ -44,17 +51,27 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 10,
+        backgroundColor: '#f5f5f5', // Light background color for better contrast
+    },
+    scrollContainer: {
+        paddingBottom: 20, // Additional padding at the bottom
     },
     welcomeMessage: {
-        fontSize: 24,
+        fontSize: 28,
         fontWeight: 'bold',
         textAlign: 'center',
         marginVertical: 20,
+        color: '#6200ee', // Primary color for text
+    },
+    ctaButton: {
+        marginBottom: 20,
+        backgroundColor: '#6200ee', // Match the primary color
     },
     cardContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        paddingHorizontal: 5, // Horizontal padding for better alignment
     },
 });
 

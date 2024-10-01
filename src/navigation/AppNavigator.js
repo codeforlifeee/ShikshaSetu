@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Text } from 'react-native-paper';
 import SliderPage from '../pages/SliderPage';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
@@ -17,13 +18,25 @@ const Tab = createBottomTabNavigator();
 
 // Define the Tab Navigator for the main pages after login
 const MainTabs = () => (
-  <Tab.Navigator>
+  <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarStyle: {
+        backgroundColor: '#fff',
+        borderTopColor: '#6200ee',
+        borderTopWidth: 2,
+      },
+      tabBarLabel: ({ focused }) => (
+        <Text style={{ color: focused ? '#6200ee' : '#888' }}>
+          {route.name}
+        </Text>
+      ),
+    })}
+  >
     <Tab.Screen name="Home" component={WelcomePage} />
     <Tab.Screen name="Notifications" component={NotificationPage} />
     <Tab.Screen name="Settings" component={SettingsPage} />
     <Tab.Screen name="Certificates" component={CertificatePage} />
     <Tab.Screen name="Ebooks" component={EbookPage} />
-    {/* Add the LiveClassScreen to the Tab Navigator */}
     <Tab.Screen name="LiveClass" component={LiveClassScreen} />
   </Tab.Navigator>
 );

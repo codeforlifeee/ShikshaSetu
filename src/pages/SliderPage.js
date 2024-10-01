@@ -13,12 +13,12 @@ const SliderPage = ({ navigation }) => {
     {
       title: 'Explore your\nnew skills today',
       content: 'You can learn various kinds of\ncourses in your hand',
-      image: require('../../assets/images/img.png'),
+      image: require('../../assets/images/slider1.png'),
     },
     {
       title: 'Empower your\neducation to next level',
       content: 'Learn new things and develop your\nproblem-solving skills',
-      image: require('../../assets/images/img.png'),
+      image: require('../../assets/images/slider2.png'),
     },
   ];
 
@@ -35,7 +35,7 @@ const SliderPage = ({ navigation }) => {
           <View key={index} style={styles.slide}>
             <Image source={slide.image} style={styles.image} resizeMode="contain" />
             <LinearGradient
-              colors={index === 0 ? ['#FFFFFF', '#FFFFFF'] : ['#FFFFFF', '#E8E3FF']}
+              colors={index === 0 ? ['#FFFFFF', '#FFFFFF'] : ['#FFFFFF', '#7870ff']}
               style={styles.contentContainer}
             >
               <Text style={styles.title}>{slide.title}</Text>
@@ -124,4 +124,3 @@ const styles = StyleSheet.create({
 });
 
 export default SliderPage;
-
