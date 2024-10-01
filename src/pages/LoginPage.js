@@ -90,3 +90,57 @@ const styles = StyleSheet.create({
 });
 
 export default LoginPage;
+
+
+//////////////
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
+        email,
+        password
+      });
+      const { token } = response.data;
+
+      // Store the token in local storage
+      localStorage.setItem('authToken', token);
+
+      // Redirect to the main app or dashboard
+      window.location.href = '/welcome'; // Adjust the path based on your route
+    } catch (err) {
+      setError('Invalid credentials');
+    }
+  };
+
+  return (
+    <form onSubmit={handleLogin}>
+      <h1>Login</h1>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter email"
+        required
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter password"
+        required
+      />
+      <button type="submit">Login</button>
+      {error && <p>{error}</p>}
+    </form>
+  );
+};
+
+export default LoginPage;

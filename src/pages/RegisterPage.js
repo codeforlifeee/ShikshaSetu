@@ -111,3 +111,62 @@ const styles = StyleSheet.create({
 });
 
 export default RegisterPage;
+/////////
+
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const RegisterPage = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/api/auth/register', {
+        username,
+        email,
+        password
+      });
+
+      // Redirect to login page after successful registration
+      window.location.href = '/login';
+    } catch (err) {
+      setError('Registration failed. Try again.');
+    }
+  };
+
+  return (
+    <form onSubmit={handleRegister}>
+      <h1>Register</h1>
+      <input
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Enter username"
+        required
+      />
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter email"
+        required
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter password"
+        required
+      />
+      <button type="submit">Register</button>
+      {error && <p>{error}</p>}
+    </form>
+  );
+};
+
+export default RegisterPage;
+
