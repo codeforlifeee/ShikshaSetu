@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Image } from 'react-native';
 import { TextInput, Button, Text } from 'react-native-paper';
-import { MaterialIcons } from '@expo/vector-icons'; // Ensure you have react-native-vector-icons installed
+import Icon from 'react-native-vector-icons/FontAwesome';
+ // Ensure you have react-native-vector-icons installed
 
 const RegisterPage = ({ navigation }) => {
   const [username, setUsername] = useState('');
