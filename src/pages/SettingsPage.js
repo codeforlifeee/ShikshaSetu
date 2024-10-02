@@ -14,14 +14,14 @@ const SettingsPage = ({ navigation }) => {
         <List.Item
           title="Edit Profile"
           left={() => <List.Icon icon="account" />}
-          onPress={() => {}}
+          onPress={() => navigation.navigate('EditProfile')}
           style={styles.listItem}
         />
         <Divider />
         <List.Item
           title="Change Password"
           left={() => <List.Icon icon="lock" />}
-          onPress={() => {}}
+          onPress={() => navigation.navigate('ChangePassword')}
           style={styles.listItem}
         />
       </List.Section>

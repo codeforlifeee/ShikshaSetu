@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native-paper';
@@ -10,8 +11,10 @@ import NotificationPage from '../pages/NotificationPage';
 import SettingsPage from '../pages/SettingsPage';
 import CertificatePage from '../pages/CertificatePage';
 import EbookPage from '../pages/EbookPage';
-import SplashPage from '../pages/SplashPage'; // Import your SplashScreen
-import LiveClassScreen from '../pages/LiveClassScreen'; // Import LiveClassScreen
+import SplashPage from '../pages/SplashPage';
+import LiveClassScreen from '../pages/LiveClassScreen';
+import StudyMaterialPage from '../pages/StudyMaterialPage';
+import ChatbotPage from '../pages/ChatbotPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -43,13 +46,17 @@ const MainTabs = () => (
 
 // Define the Stack Navigator to include SplashScreen, Login, Register, and MainTabs
 const AppNavigator = () => (
-  <Stack.Navigator initialRouteName="Splash">
-    <Stack.Screen name="Splash" component={SplashPage} options={{ headerShown: false }} />
-    <Stack.Screen name="Slider" component={SliderPage} options={{ headerShown: false }} />
-    <Stack.Screen name="Login" component={LoginPage} />
-    <Stack.Screen name="Register" component={RegisterPage} />
-    <Stack.Screen name="Main" component={MainTabs} options={{ headerShown: false }} />
-  </Stack.Navigator>
+  <NavigationContainer>
+    <Stack.Navigator initialRouteName="Splash">
+      <Stack.Screen name="Splash" component={SplashPage} options={{ headerShown: false }} />
+      <Stack.Screen name="Slider" component={SliderPage} options={{ headerShown: false }} />
+      <Stack.Screen name="Login" component={LoginPage} />
+      <Stack.Screen name="Register" component={RegisterPage} />
+      <Stack.Screen name="Main" component={MainTabs} options={{ headerShown: false }} />
+      <Stack.Screen name="StudyMaterials" component={StudyMaterialPage} />
+      <Stack.Screen name="Chatbot" component={ChatbotPage} />
+    </Stack.Navigator>
+  </NavigationContainer>
 );
 
 export default AppNavigator;

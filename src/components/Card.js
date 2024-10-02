@@ -1,23 +1,33 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Card as PaperCard, Title, Paragraph } from 'react-native-paper';
+import { View, Text, StyleSheet } from 'react-native';
 
-const Card = ({ title, description, image }) => {
+const Card = ({ title, description }) => {
   return (
-    <PaperCard style={styles.card}>
-      {image && <PaperCard.Cover source={image} />}
-      <PaperCard.Content>
-        <Title>{title}</Title>
-        {description && <Paragraph>{description}</Paragraph>}
-      </PaperCard.Content>
-    </PaperCard>
+    <View style={styles.card}>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.description}>{description}</Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    width: '48%',
-    marginBottom: 16,
+    backgroundColor: '#fff',
+    padding: 15,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  description: {
+    fontSize: 14,
+    marginTop: 5,
   },
 });
 

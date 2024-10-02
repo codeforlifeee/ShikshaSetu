@@ -1,14 +1,17 @@
 import React from 'react';
 import { View, StyleSheet, FlatList, Text } from 'react-native';
 import { List, Divider } from 'react-native-paper';
+import globalStyles from '../styles/globalStyles'; // Ensure this path is correct
 
 const NotificationPage = () => {
+  // Sample notifications data
   const notifications = [
     { id: '1', title: 'New course available', description: 'Check out our new Python course!' },
     { id: '2', title: 'Upcoming live class', description: 'Join the Math class tomorrow at 3 PM' },
-    { id: '3', title: 'Assignment due', description: 'Don\'t forget to submit your essay by Friday' },
+    { id: '3', title: 'Assignment due', description: "Don't forget to submit your essay by Friday" },
   ];
 
+  // Render each notification item
   const renderItem = ({ item }) => (
     <List.Item
       title={item.title}
@@ -21,7 +24,8 @@ const NotificationPage = () => {
   );
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
+      <Text style={styles.header}>Notifications</Text>
       {notifications.length === 0 ? (
         <Text style={styles.emptyMessage}>No notifications available</Text>
       ) : (
@@ -37,10 +41,12 @@ const NotificationPage = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#f9f9f9', // Light background for contrast
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
+    color: '#6200ee', // Primary color for titles
   },
   listItem: {
     paddingVertical: 15,

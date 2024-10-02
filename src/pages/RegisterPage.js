@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Image } from 'react-native';
-import { TextInput, Button, Text } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
- // Ensure you have react-native-vector-icons installed
+import { TextInput, Button, Text } from 'react-native-paper'; // Ensure you have react-native-paper installed
 
 const RegisterPage = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -10,23 +8,31 @@ const RegisterPage = ({ navigation }) => {
   const [dob, setDob] = useState('');
   const [educationalStatus, setEducationalStatus] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(''); // State for error handling
 
-  const handleRegister = () => {
-    // Logic for registration goes here...
-    navigation.navigate('Main', { screen: 'Home' });
+  const handleRegister = async () => {
+    try {
+      // Perform registration logic, e.g., API call here
+      // await axios.post('http://localhost:5000/api/auth/register', { username, email, dob, educationalStatus, password });
+
+      // Navigate to home screen on successful registration
+      navigation.navigate('Main', { screen: 'Home' });
+    } catch (err) {
+      setError('Registration failed. Please try again.'); // Set error message on failure
+    }
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image source={require('../../assets/images/logo.png')} style={styles.logo} resizeMode="contain" />
       <Text style={styles.title}>Register</Text>
+      {error && <Text style={styles.error}>{error}</Text>} {/* Display error message */}
       <TextInput
         label="Username"
         value={username}
         onChangeText={setUsername}
         style={styles.input}
         mode="outlined"
-        left={<TextInput.Icon name={() => <MaterialIcons name="person" size={20} color="#6200ee" />} />}
       />
       <TextInput
         label="Email"
@@ -35,7 +41,6 @@ const RegisterPage = ({ navigation }) => {
         keyboardType="email-address"
         style={styles.input}
         mode="outlined"
-        left={<TextInput.Icon name={() => <MaterialIcons name="email" size={20} color="#6200ee" />} />}
       />
       <TextInput
         label="Date of Birth"
@@ -44,7 +49,6 @@ const RegisterPage = ({ navigation }) => {
         placeholder="DD/MM/YYYY"
         style={styles.input}
         mode="outlined"
-        left={<TextInput.Icon name={() => <MaterialIcons name="calendar-today" size={20} color="#6200ee" />} />}
       />
       <TextInput
         label="Educational Status"
@@ -60,7 +64,6 @@ const RegisterPage = ({ navigation }) => {
         secureTextEntry
         style={styles.input}
         mode="outlined"
-        left={<TextInput.Icon name={() => <MaterialIcons name="lock" size={20} color="#6200ee" />} />}
       />
       <Button
         mode="contained"
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 20,
     justifyContent: 'center',
-    backgroundColor: '#f5f5f5', // Light background color
+    backgroundColor: '#f5f5f5',
   },
   logo: {
     width: 120,
@@ -94,16 +97,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#6200ee', // Primary color for text
+    color: '#6200ee',
+  },
+  error: {
+    color: 'red',
+    marginBottom: 10,
+    textAlign: 'center',
   },
   input: {
     marginBottom: 15,
-    backgroundColor: '#ffffff', // White background for inputs
+    backgroundColor: '#ffffff',
   },
   registerButton: {
     marginTop: 10,
     marginBottom: 20,
-    backgroundColor: '#6200ee', // Primary color for button
+    backgroundColor: '#6200ee',
   },
   loginButton: {
     marginTop: 10,
@@ -111,62 +119,3 @@ const styles = StyleSheet.create({
 });
 
 export default RegisterPage;
-/////////
-
-import React, { useState } from 'react';
-import axios from 'axios';
-
-const RegisterPage = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('http://localhost:5000/api/auth/register', {
-        username,
-        email,
-        password
-      });
-
-      // Redirect to login page after successful registration
-      window.location.href = '/login';
-    } catch (err) {
-      setError('Registration failed. Try again.');
-    }
-  };
-
-  return (
-    <form onSubmit={handleRegister}>
-      <h1>Register</h1>
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Enter username"
-        required
-      />
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter email"
-        required
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter password"
-        required
-      />
-      <button type="submit">Register</button>
-      {error && <p>{error}</p>}
-    </form>
-  );
-};
-
-export default RegisterPage;
-

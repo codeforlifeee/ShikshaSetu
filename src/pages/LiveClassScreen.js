@@ -1,134 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ScrollView, Dimensions } from 'react-native';
-import { TextInput, Button, Title, Text } from 'react-native-paper';
-import { WebView } from 'react-native-webview';
+import React from 'react';
+import { View, StyleSheet, ScrollView } from 'react-native';
+import { Title } from 'react-native-paper';
+import Card from '../components/Card';
+import globalStyles from '../styles/globalStyles';
 
-const LiveClassScreen = () => {
-  const [message, setMessage] = useState('');
-  const [chat, setChat] = useState([]);
-  const [isLandscape, setIsLandscape] = useState(false);
-
-  useEffect(() => {
-    const handleOrientationChange = () => {
-      const { width, height } = Dimensions.get('window');
-      setIsLandscape(width > height);
-    };
-
-    // Add event listener for dimension changes
-    Dimensions.addEventListener('change', handleOrientationChange);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      Dimensions.removeEventListener('change', handleOrientationChange);
-    };
-  }, []);
-
-  const sendMessage = () => {
-    if (message.trim()) {
-      setChat([
-        ...chat,
-        { id: Date.now(), text: message, sender: 'You', time: new Date().toLocaleTimeString() },
-      ]);
-      setMessage('');
-    }
-  };
+const EbookPage = () => {
+  const ebooks = [
+    {
+      id: 1,
+      title: 'Introduction to React Native',
+      description: 'Learn the basics of React Native development',
+      image: require('../../assets/images/ebook1.png'),
+    },
+    {
+      id: 2,
+      title: 'Advanced JavaScript',
+      description: 'Master advanced concepts in JavaScript',
+      image: require('../../assets/images/ebook2.png'),
+    },
+    {
+      id: 3,
+      title: 'Data Structures and Algorithms',
+      description: 'Comprehensive guide to DS&A',
+      image: require('../../assets/images/ebook3.png'),
+    },
+    {
+      id: 4,
+      title: 'Machine Learning Basics',
+      description: 'Get started with machine learning concepts',
+      image: require('../../assets/images/ebook4.png'),
+    },
+  ];
 
   return (
-    <View style={styles.container}>
-      <View style={styles.videoContainer}>
-        <WebView
-          style={styles.videoPlaceholder}
-          source={{ uri: 'https://www.youtube.com/embed/w7ejDZ8SWv8?autoplay=1' }}
-          javaScriptEnabled={true}
-          domStorageEnabled={true}
-          allowsInlineMediaPlayback={true}
-          mediaPlaybackRequiresUserAction={false}
-        />
-      </View>
-      <View style={styles.chatContainer}>
-        <ScrollView style={styles.chatMessages}>
-          {chat.map((msg) => (
-            <View key={msg.id} style={styles.message}>
-              <Text style={styles.sender}>{msg.sender}</Text>
-              <Text>{msg.text}</Text>
-              <Text style={styles.time}>{msg.time}</Text>
-            </View>
+    <View style={globalStyles.container}>
+      <Title style={styles.title}>Ebooks</Title>
+      <ScrollView>
+        <View style={styles.cardContainer}>
+          {ebooks.map((ebook) => (
+            <Card
+              key={ebook.id}
+              title={ebook.title}
+              description={ebook.description}
+              image={ebook.image}
+              style={styles.card} // Added a style prop
+            />
           ))}
-        </ScrollView>
-        <View style={styles.inputContainer}>
-          <TextInput
-            value={message}
-            onChangeText={setMessage}
-            placeholder="Type your message..."
-            style={styles.input}
-            mode="outlined"
-          />
-          <Button
-            mode="contained"
-            onPress={sendMessage}
-            style={styles.sendButton}
-            labelStyle={styles.sendButtonLabel}
-          >
-            Send
-          </Button>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  videoContainer: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#000',
-  },
-  videoPlaceholder: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 10,
-  },
-  chatContainer: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#f9f9f9',
-  },
-  chatMessages: {
-    flex: 1,
-    marginBottom: 10,
-  },
-  message: {
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-    paddingBottom: 5,
-  },
-  sender: {
+  title: {
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#6200ee',
+    marginBottom: 20,
+    color: '#6200ee', // Primary color for title
+    textAlign: 'center', // Center the title
   },
-  time: {
-    fontSize: 10,
-    color: '#888',
-  },
-  inputContainer: {
+  cardContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
-  input: {
-    flex: 1,
-    marginRight: 10,
-  },
-  sendButton: {
-    backgroundColor: '#7870ff', // Brighter violet color
-    paddingVertical: 5,
-  },
-  sendButtonLabel: {
-    color: '#fff', // White text color for better contrast
+  card: {
+    width: '48%', // Set width for card responsiveness
+    marginBottom: 16, // Space between cards
+    borderRadius: 10, // Rounded corners for cards
+    elevation: 3, // Shadow for depth
+    backgroundColor: '#fff', // Card background
   },
 });
 
-export default LiveClassScreen;
+export default EbookPage;

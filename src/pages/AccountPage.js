@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Title, List, Button } from 'react-native-paper';
+import globalStyles from '../styles/globalStyles'; // Import global styles
 
 const AccountPage = () => {
   // Placeholder user data
@@ -13,7 +14,7 @@ const AccountPage = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={globalStyles.container}>
       <Title style={styles.title}>Account Information</Title>
 
       <List.Section>
@@ -66,10 +67,6 @@ const AccountPage = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',

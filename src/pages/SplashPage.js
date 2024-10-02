@@ -1,9 +1,8 @@
-// src/SplashScreen.js
 import React, { useEffect } from 'react';
 import { View, Text, Image, StyleSheet, Animated } from 'react-native';
 
 const SplashPage = ({ navigation }) => {
-    const fadeAnim = new Animated.Value(0); // Initial opacity for logo fade in
+    const fadeAnim = new Animated.Value(0); // Initial opacity for logo fade-in
 
     useEffect(() => {
         // Fade-in animation
@@ -30,6 +29,7 @@ const SplashPage = ({ navigation }) => {
                 />
             </Animated.View>
             <Text style={styles.title}>Welcome to ShikshaSetu!</Text>
+            {/* You can add any additional splash screen content or loading animation here */}
         </View>
     );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Title, Card, Paragraph } from 'react-native-paper';
 import SearchBar from '../components/SearchBar';
+import globalStyles from '../styles/globalStyles';
 
 const TeacherDashboardPage = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -13,29 +14,37 @@ const TeacherDashboardPage = () => {
     { id: 2, name: 'Bob Smith', course: 'Physics' },
     { id: 3, name: 'Charlie Brown', course: 'Chemistry' },
     { id: 4, name: 'Diana Miller', course: 'Biology' },
+    // Add more students as needed
   ];
 
+  // Filter students based on search query
+  const filteredStudents = students.filter(student =>
+    student.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <ScrollView style={styles.container}>
-      <Title style={styles.welcomeMessage}>Welcome, Teacher!</Title>
+    <View style={globalStyles.container}>
+      <ScrollView style={styles.container}>
+        <Title style={styles.welcomeMessage}>Welcome, Teacher!</Title>
 
-      <SearchBar
-        placeholder="Search students"
-        onChangeText={onChangeSearch}
-        value={searchQuery}
-      />
+        <SearchBar
+          placeholder="Search students"
+          onChangeText={onChangeSearch}
+          value={searchQuery}
+        />
 
-      <View style={styles.cardContainer}>
-        {students.map((student) => (
-          <Card key={student.id} style={styles.card}>
-            <Card.Content>
-              <Title>{student.name}</Title>
-              <Paragraph>{student.course}</Paragraph>
-            </Card.Content>
-          </Card>
-        ))}
-      </View>
-    </ScrollView>
+        <View style={styles.cardContainer}>
+          {filteredStudents.map((student) => (
+            <Card key={student.id} style={styles.card}>
+              <Card.Content>
+                <Title>{student.name}</Title>
+                <Paragraph>{student.course}</Paragraph>
+              </Card.Content>
+            </Card>
+          ))}
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

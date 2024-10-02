@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, ScrollView } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient';
@@ -23,7 +23,7 @@ const SliderPage = ({ navigation }) => {
   ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Swiper
         loop={false}
         onIndexChanged={(index) => setActiveIndex(index)}
@@ -62,7 +62,7 @@ const SliderPage = ({ navigation }) => {
           </View>
         ))}
       </Swiper>
-    </View>
+    </ScrollView>
   );
 };
 

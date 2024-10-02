@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Title, Button } from 'react-native-paper';
 import SearchBar from '../components/SearchBar';
 import Card from '../components/Card';
+import globalStyles from '../styles/globalStyles';
 
 const WelcomePage = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = React.useState('');
@@ -18,7 +19,7 @@ const WelcomePage = ({ navigation }) => {
     ];
 
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
             <SearchBar
                 placeholder="Search"
                 onChangeText={onChangeSearch}
@@ -28,7 +29,7 @@ const WelcomePage = ({ navigation }) => {
                 <Title style={styles.welcomeMessage}>Welcome to ShikshaSetu!</Title>
                 <Button
                     mode="contained"
-                    onPress={() => { /* Logic for navigating or additional actions */ }}
+                    onPress={() => navigation.navigate('StudyMaterials')}
                     style={styles.ctaButton}
                 >
                     Explore Courses
@@ -39,6 +40,10 @@ const WelcomePage = ({ navigation }) => {
                             key={index}
                             title={`Course ${index + 1}`}
                             image={image}
+                            onPress={() => {
+                                // Navigate to a detailed course page or any other action
+                                navigation.navigate('CourseDetails', { courseId: index + 1 });
+                            }}
                         />
                     ))}
                 </View>
@@ -48,11 +53,6 @@ const WelcomePage = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10,
-        backgroundColor: '#f5f5f5', // Light background color for better contrast
-    },
     scrollContainer: {
         paddingBottom: 20, // Additional padding at the bottom
     },

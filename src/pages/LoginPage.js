@@ -1,25 +1,54 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import { TextInput, Button, Text } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native'; // Ensure navigation is imported
 
-
-const LoginPage = ({ navigation }) => {
-  const [username, setUsername] = useState('');
+const LoginPage = () => {
+  const navigation = useNavigation(); // Use navigation hook
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isTeacher, setIsTeacher] = useState(false);
+
+  const handleLogin = async () => {
+    try {
+      // Replace with your backend API endpoint
+      const response = await fetch('https://your-backend-api.com/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          role: isTeacher ? 'teacher' : 'student', // Include user role
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Assuming you get a success response from the server
+        navigation.navigate('Welcome', { user: data.user });
+      } else {
+        // Handle login error
+        alert(data.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('An error occurred. Please try again.');
+    }
+  };
 
   return (
     <View style={styles.container}>
       <Image source={require('../../assets/images/logo.png')} style={styles.logo} resizeMode="contain" />
       <Text style={styles.title}>Login</Text>
       <TextInput
-        label="Username"
-        value={username}
-        onChangeText={setUsername}
+        label="Email"
+        value={email}
+        onChangeText={setEmail}
         style={styles.input}
         mode="outlined"
-        left={<TextInput.Icon name={() => <MaterialIcons name="person" size={20} color="#6200ee" />} />}
       />
       <TextInput
         label="Password"
@@ -28,7 +57,6 @@ const LoginPage = ({ navigation }) => {
         secureTextEntry
         style={styles.input}
         mode="outlined"
-        left={<TextInput.Icon name={() => <MaterialIcons name="lock" size={20} color="#6200ee" />} />}
       />
       <Button
         mode="outlined"
@@ -38,7 +66,7 @@ const LoginPage = ({ navigation }) => {
       >
         {isTeacher ? 'Login as Student' : 'Login as Teacher'}
       </Button>
-      <Button mode="contained" onPress={() => {}} style={styles.loginButton}>
+      <Button mode="contained" onPress={handleLogin} style={styles.loginButton}>
         Login
       </Button>
       <Button onPress={() => navigation.navigate('Register')} style={styles.registerButton}>
@@ -88,59 +116,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
-
-export default LoginPage;
-
-
-//////////////
-import React, { useState } from 'react';
-import axios from 'axios';
-
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
-        email,
-        password
-      });
-      const { token } = response.data;
-
-      // Store the token in local storage
-      localStorage.setItem('authToken', token);
-
-      // Redirect to the main app or dashboard
-      window.location.href = '/welcome'; // Adjust the path based on your route
-    } catch (err) {
-      setError('Invalid credentials');
-    }
-  };
-
-  return (
-    <form onSubmit={handleLogin}>
-      <h1>Login</h1>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter email"
-        required
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter password"
-        required
-      />
-      <button type="submit">Login</button>
-      {error && <p>{error}</p>}
-    </form>
-  );
-};
 
 export default LoginPage;
